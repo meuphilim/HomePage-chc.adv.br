@@ -1,0 +1,43 @@
+# .gitignore for Next.js Static Export (Production)
+
+# Dependencies
+node_modules/
+
+# Next.js Build
+.next/
+out/
+build/
+
+# Production Environment (Placeholders only)
+.env
+.env.production
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Testing & Reports
+playwright-report/
+test-results/
+coverage/
+.nyc_output
+
+# Misc
+.DS_Store
+*.pem
+npm-debug.log*
+tsconfig.tsbuildinfo
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary Files
+.temp/
+tmp/

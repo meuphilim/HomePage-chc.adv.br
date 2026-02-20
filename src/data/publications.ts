@@ -1,0 +1,646 @@
+import { Publication } from "@/types/publication";
+
+export const PUBLICATIONS_DATA: Publication[] = [
+    // --- LIVROS ---
+    {
+        id: "book-2025-01",
+        type: "book",
+        title: "Oratória Geral e Forense - mais de 100 dicas",
+        year: 2025,
+        publisher: "Editora Juruá",
+        city: "Curitiba",
+        pages: 114,
+        coverImage: "/images/books/514GNkXUdUL.jpg",
+        purchaseUrl: "https://www.jurua.com.br/shop_item.asp?id=30080", // Real link found or placeholder
+        soldOut: false
+    },
+    {
+        id: "book-2024-01",
+        type: "book",
+        title: "O tempo e o direito : reflexões a partir do processo civil romano",
+        year: 2024,
+        publisher: "Editora Íthala Ltda.",
+        city: "Curitiba",
+        pages: 76,
+        coverImage: "/images/books/Páginas-de-O-tempo-e-o-Direito.pdf.png",
+        purchaseUrl: "https://ithala.com.br/", // Placeholder
+        soldOut: false
+    },
+    {
+        id: "book-2024-02",
+        type: "book",
+        title: "il tempo e il diritto: riflessioni a partire dal processo civile romano",
+        year: 2024,
+        publisher: "Editora Ithala Ltda.",
+        city: "Curitiba",
+        coverImage: "/images/books/Páginas-de-Il-Tempo-e-il-Diritto.pdf.png",
+        purchaseUrl: "https://ithala.com.br/", // Placeholder
+        soldOut: false
+    },
+    {
+        id: "book-2024-03",
+        type: "book",
+        title: "Il tempo e il diritto: riflessioni a partire dal processo civile romano (Edição Italiana)",
+        year: 2024,
+        publisher: "Cacucci",
+        city: "Bari - Itália",
+        pages: 78,
+        coverImage: "/images/books/51zo6hyhmdL.jpg",
+        purchaseUrl: "#",
+        soldOut: false
+    },
+    {
+        id: "book-2023-01",
+        type: "book",
+        title: "A democracia direta por meio da democracia eletrônica",
+        year: 2023,
+        publisher: "Editora Íthala Ltda.",
+        city: "Curitiba",
+        pages: 296,
+        coverImage: "/images/books/democracia.jpg",
+        purchaseUrl: "https://ithala.com.br/",
+        soldOut: false
+    },
+    {
+        id: "book-2023-02",
+        type: "book",
+        title: "Direito: para quem precisa",
+        year: 2023,
+        publisher: "Editora Íthala Ltda.",
+        city: "Curitiba",
+        pages: 195,
+    },
+    {
+        id: "book-2021-01",
+        type: "book",
+        title: "Temas de processo civil romano e direito romano clássico",
+        year: 2021,
+        publisher: "Editora Íthala",
+        city: "Curitiba",
+        pages: 128,
+    },
+    {
+        id: "book-2021-02",
+        type: "book",
+        title: "Os jurisconsultos e a justiça. Do Direito Romano à Contemporaneidade",
+        year: 2021,
+        publisher: "Editora Íthala",
+        city: "Curitiba",
+        pages: 120,
+    },
+    {
+        id: "book-2021-03",
+        type: "book",
+        title: "A lei de licitações 14.133/2021 e as obras de engenharia de grande vulto",
+        year: 2021,
+        publisher: "Editora Íthala",
+        city: "Curitiba",
+        pages: 133,
+    },
+    {
+        id: "book-2020-01",
+        type: "book",
+        title: "Referendo Popular na Democracia sem Povo",
+        year: 2020,
+        publisher: "Editora Íthala",
+        city: "Curitiba",
+        pages: 300,
+    },
+    {
+        id: "book-2019-01",
+        type: "book",
+        title: "Direito do Consumidor: dicas e deveres",
+        year: 2019,
+        publisher: "Editora Íthala",
+        city: "Curitiba",
+        pages: 54,
+    },
+    {
+        id: "book-2018-01",
+        type: "book",
+        title: "Direito do Consumidor",
+        year: 2018,
+        publisher: "Editora Íthala",
+        city: "Curitiba",
+        pages: 194,
+    },
+    {
+        id: "book-2018-02",
+        type: "book",
+        title: "Guia Prático sobre o Termo de Ajustamento de Gestão - TAG junto ao TCE-PR (2ª ed)",
+        year: 2018,
+        publisher: "Editora Íthala",
+        city: "Curitiba",
+        pages: 165,
+    },
+    {
+        id: "book-2017-01",
+        type: "book",
+        title: "Guia prático sobre o Termo de Ajustamento de Gestão: TAG junto ao TCEPR",
+        year: 2017,
+        publisher: "Edição por demanda",
+        city: "Curitiba",
+        pages: 135,
+    },
+    {
+        id: "book-2017-02",
+        type: "book",
+        title: "Escritos sobre o Brasil, o direito, as cidades e as religiões - V. 2",
+        year: 2017,
+        publisher: "Edição por demanda",
+        city: "Curitiba",
+        pages: 170,
+    },
+    {
+        id: "book-2015-01",
+        type: "book",
+        title: "Dicas para elaboração de Auditorias Públicas e Controle Interno",
+        year: 2015,
+        publisher: "Por demanda",
+        city: "Curitiba",
+        pages: 136,
+    },
+    {
+        id: "book-2015-02",
+        type: "book",
+        title: "Escritos sobre o Brasil, o direito, as cidades e as religiões",
+        year: 2015,
+        publisher: "Por demanda",
+        city: "Curitiba",
+        pages: 110,
+    },
+    {
+        id: "book-2015-03",
+        type: "book",
+        title: "O Jeitinho no Direito Administrativo Brasileiro e seus efeitos no Desenvolvimento (2ª ed)",
+        year: 2015,
+        publisher: "Edição por Demanda",
+        city: "Curitiba",
+        pages: 171,
+    },
+    {
+        id: "book-2012-01",
+        type: "book",
+        title: "Reflexões sobre o Direito e o cotidiano",
+        year: 2012,
+        publisher: "Independente",
+        city: "Curitiba",
+        pages: 209,
+    },
+    {
+        id: "book-2011-01",
+        type: "book",
+        title: "O Jeitinho no Direito Administrativo Brasileiro e seus efeitos no Desenvolvimento",
+        year: 2011,
+        publisher: "Edição por Demanda",
+        city: "Curitiba",
+        pages: 240,
+    },
+    {
+        id: "book-2010-01",
+        type: "book",
+        title: "A Sociedade Vigiada e as punições invisíveis",
+        year: 2010,
+        publisher: "Editora I. Scherer Ltda.",
+        city: "Curitiba",
+        pages: 88,
+    },
+    {
+        id: "book-2001-01",
+        type: "book",
+        title: "A globalização: definição, efeitos e possibilidades no Direito",
+        year: 2001,
+        publisher: "Editora Scherer",
+        city: "Curitiba",
+        pages: 92,
+    },
+    {
+        id: "book-2001-02",
+        type: "book",
+        title: "Arte, Direito & Utopia",
+        year: 2001,
+        publisher: "Editora Scherer",
+        city: "Curitiba",
+        pages: 107,
+    },
+    {
+        id: "book-2000-01",
+        type: "book",
+        title: "O Direito e o Caso Concreto",
+        year: 2000,
+        publisher: "Editora Scherer",
+        city: "Curitiba",
+        pages: 116,
+    },
+
+
+    // --- ARTIGOS ---
+    {
+        id: "art-1",
+        type: "article",
+        title: "Breves anotações sobre o direito fundamental à integridade e à proteção no espaço digital e suas repercussões no direito público e no direito privado",
+        year: 2025,
+        journal: "Revista Direito UTP",
+        volume: "v. 6",
+        pages: "3-30",
+        researchLine: "direito_digital",
+        highlighted: true
+    },
+    {
+        id: "art-2",
+        type: "article",
+        title: "Breves anotações sobre o direito fundamental à integridade e à proteção no espaço digital",
+        year: 2025,
+        journal: "Revista Digital do TCEPR",
+        volume: "v. XIV",
+        pages: "10-35",
+        researchLine: "direito_digital",
+        highlighted: true
+    },
+    {
+        id: "art-3",
+        type: "article",
+        title: "O direito fundamental à integridade e à proteção no espaço digital",
+        year: 2025,
+        journal: "REVISTA JUDICIÁRIA DO PARANÁ",
+        volume: "v. 35",
+        pages: "172-197",
+        researchLine: "direito_digital",
+        highlighted: true
+    },
+    {
+        id: "art-4",
+        type: "article",
+        title: "Breves anotações sobre o direito fundamental à integridade e à proteção no espaço digital e suas repercussões",
+        year: 2025,
+        journal: "Revista Aconjur",
+        volume: "v. 6",
+        pages: "24-51",
+        researchLine: "direito_digital"
+    },
+    {
+        id: "art-5",
+        type: "article",
+        title: "Reflexões sobre os danos morais coletivos decorrentes de atos praticados contra a Administração Pública",
+        year: 2024,
+        journal: "Revista Digital do TCEPR",
+        volume: "v. 11",
+        pages: "40-46",
+        researchLine: "direito_administrativo",
+        highlighted: true
+    },
+    {
+        id: "art-6",
+        type: "article",
+        title: "Danos morais coletivos no âmbito administrativo",
+        year: 2024,
+        journal: "REVISTA BONIJURIS",
+        volume: "v. 36",
+        pages: "112-112",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-7",
+        type: "article",
+        title: "Sobre a igualdade no Direito Administrativo",
+        year: 2023,
+        journal: "REVISTA BONIJURIS",
+        volume: "v. 35",
+        pages: "48-55",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-8",
+        type: "article",
+        title: "Histórico recente das criptomoedas e suas repercussões no Direito",
+        year: 2023,
+        journal: "REVISTA DIGITAL DO TCEPR",
+        volume: "v. 39",
+        pages: "10-36",
+        researchLine: "direito_digital",
+        highlighted: true
+    },
+    {
+        id: "art-9",
+        type: "article",
+        title: "Notas sobre a igualdade no Direito Administrativo",
+        year: 2023,
+        journal: "REVISTA JUDICIÁRIA DO PARANÁ",
+        volume: "v. 27",
+        pages: "68-78",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-10",
+        type: "article",
+        title: "Reflexões sobre os ilícitos atípicos (Bonijuris)",
+        year: 2023,
+        journal: "REVISTA BONIJURIS",
+        volume: "v. 684",
+        pages: "64-79",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-11",
+        type: "article",
+        title: "Reflexões sobre os ilícitos atípicos (TCEPR)",
+        year: 2023,
+        journal: "REVISTA DIGITAL DO TCEPR",
+        volume: "v. 11",
+        pages: "10-29",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-12",
+        type: "article",
+        title: "Reflexões sobre os ilícitos atípicos (UTP)",
+        year: 2023,
+        journal: "Revista Direito UTP",
+        volume: "v. 4",
+        pages: "18-38",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-13",
+        type: "article",
+        title: "Histórico recente das criptomoedas e suas repercussões no direito",
+        year: 2022,
+        journal: "Revista Direito UTP",
+        volume: "v. 3",
+        pages: "157",
+        researchLine: "direito_digital"
+    },
+    {
+        id: "art-14",
+        type: "article",
+        title: "O tribuno da plebe no direito romano",
+        year: 2021,
+        journal: "REVISTA DOS TRIBUNAIS",
+        volume: "v. 1024",
+        pages: "257-275",
+        researchLine: "direito_romano"
+    },
+    {
+        id: "art-15",
+        type: "article",
+        title: "A declaração de inidoneidade e o impedimento de licitar na nova lei 14.133/2021",
+        year: 2021,
+        journal: "REVISTA DIGITAL DO TCE-PR",
+        volume: "v. 1",
+        pages: "10-24",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-16",
+        type: "article",
+        title: "Sobre a importância do Direito Romano",
+        year: 2020,
+        journal: "REVISTA BONIJURIS",
+        volume: "v. 32",
+        pages: "74-80",
+        researchLine: "direito_romano"
+    },
+    {
+        id: "art-17",
+        type: "article",
+        title: "A amplitude da sanção de suspensão temporária de participação em licitação",
+        year: 2020,
+        journal: "REVISTA DIGITAL DO TCE-PR",
+        volume: "v. 29",
+        pages: "10-21",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-18",
+        type: "article",
+        title: "A ausência de plebiscito e o déficit democrático",
+        year: 2019,
+        journal: "REVISTA BONIJURIS",
+        volume: "v. 31",
+        pages: "104-113",
+        researchLine: "direito_constitucional"
+    },
+    {
+        id: "art-19",
+        type: "article",
+        title: "A ecologização do Direito e os animais domésticos",
+        year: 2019,
+        journal: "ARGUMENTUM (UNIMAR)",
+        volume: "v. 20",
+        pages: "97-111",
+        researchLine: "direito_constitucional"
+    },
+    {
+        id: "art-20",
+        type: "article",
+        title: "Os precedentes no direito romano e no CPC Brasileiro",
+        year: 2019,
+        journal: "REVISTA BONIJURIS",
+        volume: "v. 1",
+        pages: "72-81",
+        researchLine: "direito_romano"
+    },
+    {
+        id: "art-21",
+        type: "article",
+        title: "Breves notas sobre a arbitragem no Direito Público",
+        year: 2016,
+        journal: "Revista de Licitações e Contratos",
+        volume: "ano IX",
+        pages: "115-122",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-23",
+        type: "article",
+        title: "Anotações ao processo formulário no Direito Romano Clássico",
+        year: 2014,
+        journal: "Revista Bonijuris",
+        volume: "v. XXVI",
+        pages: "35-44",
+        researchLine: "direito_romano"
+    },
+    {
+        id: "art-24",
+        type: "article",
+        title: "Mapa de risco: A ciência dos prognósticos nas auditorias",
+        year: 2008,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 169",
+        researchLine: "controle_publico"
+    },
+    {
+        id: "art-25",
+        type: "article",
+        title: "Implantação do Planejamento estratégico no TCEPR",
+        year: 2008,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 165",
+        researchLine: "controle_publico"
+    },
+    {
+        id: "art-27",
+        type: "article",
+        title: "Anotações Sobre o Exercício da Fiscalização dos Tribunais de Contas e o Sigilo de Informações",
+        year: 2007,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 163",
+        researchLine: "controle_publico"
+    },
+    {
+        id: "art-28",
+        type: "article",
+        title: "Interpretações ao §3º do artigo 5º da Constituição Federal",
+        year: 2007,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 520",
+        researchLine: "direito_constitucional"
+    },
+    {
+        id: "art-30",
+        type: "article",
+        title: "Reflexões sobre o controle interno",
+        year: 2006,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 154",
+        researchLine: "controle_publico"
+    },
+    {
+        id: "art-31",
+        type: "article",
+        title: "Anotações ao poder de sigilo do estado (TCDF)",
+        year: 2006,
+        journal: "Revista do Tribunal de Contas do Distrito Federal",
+        volume: "v. 32",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-35",
+        type: "article",
+        title: "Do teste seletivo para admissão de estagiários na Administração Pública",
+        year: 2004,
+        journal: "Revista do Tribunal de Contas do Paraná",
+        volume: "v. 150",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-36",
+        type: "article",
+        title: "Opções Invencíveis ao Cumprimento das Tarefas do Estado",
+        year: 2003,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 480",
+        researchLine: "controle_publico"
+    },
+    {
+        id: "art-37",
+        type: "article",
+        title: "Resenha sobre a aplicação subsidiária da lei n. 9784/99",
+        year: 2002,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 141",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-38",
+        type: "article",
+        title: "As recentes decisões do STF quanto a LRF",
+        year: 2002,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 142",
+        researchLine: "controle_publico"
+    },
+    {
+        id: "art-40",
+        type: "article",
+        title: "Legislação Aplicável aos Processos Administrativos nos Tribunais de Conta",
+        year: 2002,
+        journal: "REVISTA DO TRIBUNAL DE CONTAS DO ESTADO DO PARANÁ",
+        volume: "v. 463",
+        researchLine: "controle_publico"
+    },
+    {
+        id: "art-42",
+        type: "article",
+        title: "A globalização e o meio ambiente e o poder transformador do município",
+        year: 2001,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 139",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-46",
+        type: "article",
+        title: "A anterioridade na fixação dos subsídios dos vereadores e as recentes alterações constitucionais",
+        year: 2000,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 133",
+        researchLine: "direito_constitucional"
+    },
+    {
+        id: "art-51",
+        type: "article",
+        title: "A boa fé e diligência em matéria contratual",
+        year: 1999,
+        journal: "Revista do Tribunal de Contas do Estado do Paraná",
+        volume: "v. 131",
+        researchLine: "direito_administrativo"
+    },
+    {
+        id: "art-52",
+        type: "article",
+        title: "Casuística no Direito Romano",
+        year: 1999,
+        journal: "Revista Gênesis de Direito Processual Civil",
+        volume: "v. 13",
+        researchLine: "direito_romano"
+    },
+    {
+        id: "art-54",
+        type: "article",
+        title: "A tópica no Direito Romano Clássico",
+        year: 1999,
+        journal: "Revista da Pós Graduação Em Direito da Ufpr",
+        volume: "v. 32",
+        researchLine: "direito_romano"
+    },
+    {
+        id: "art-57",
+        type: "article",
+        title: "Breves anotações sobre o direito ao contraditório",
+        year: 1997,
+        journal: "Revista de Processo",
+        volume: "v. 85",
+        researchLine: "direito_administrativo"
+    },
+
+
+    // --- CAPÍTULOS DE LIVROS ---
+    {
+        id: "chap-01",
+        type: "book_chapter",
+        title: "Anotações sobre a violência contra as mulheres",
+        bookTitle: "Mulheres do IAB : igualdade, liderança e autonomia para uma ação transformadora",
+        year: 2023,
+        publisher: "Dom Modesto",
+        pages: "76-82"
+    },
+    {
+        id: "chap-02",
+        type: "book_chapter",
+        title: "A sanção temporária e a suspensão em licitações de acordo com a nova lei de licitações",
+        bookTitle: "Estudos interdisciplinares de Direito: Comemoração dos 60 anos da UFSC",
+        year: 2021,
+        publisher: "Editora Insular",
+        pages: "207-224"
+    },
+    {
+        id: "chap-03",
+        type: "book_chapter",
+        title: "A advocacia em tempos de pandemia: a instabilidade dos direitos e a segurança jurídica",
+        bookTitle: "Advocacia nas causas coletivas e na contemporaneidade",
+        year: 2020,
+        publisher: "Editora Insular",
+        pages: "134-158"
+    }
+];

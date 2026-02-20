@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@layer base {
+  body {
+    @apply bg-dark-900 text-gray-100 overflow-x-hidden antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    @apply bg-gold-500/30 text-gold-300;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-300 via-gold-400 to-gold-600;
+  }
+
+  .glass-panel {
+    @apply bg-dark-900/60 backdrop-blur-xl border border-white/5 shadow-xl;
+  }
+
+  /* Typography Utilities */
+  .text-body-lg {
+    @apply text-lg text-gray-300 leading-relaxed;
+  }
+
+  .text-body-base {
+    @apply text-base text-gray-400 leading-relaxed;
+  }
+
+  .perspective {
+    perspective: 1000px;
+  }
+
+  /* Card Utilities */
+  .card-base {
+    @apply bg-dark-800 rounded-xl p-8 border border-white/5 hover:border-gold-500/30 transition-all duration-300;
+  }
+
+  .interactive-card {
+    @apply cursor-pointer hover:shadow-2xl hover:shadow-gold-500/10 transition-all duration-300;
+  }
+
+  /* Button Utilities */
+  .btn-primary {
+    @apply px-8 py-4 bg-gold-600 text-white rounded-full font-semibold hover:bg-gold-500 transition-all hover:scale-105 shadow-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:ring-offset-2 focus:ring-offset-dark-900;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2 bg-gold-600/10 border border-gold-600/50 text-gold-400 rounded-full font-medium hover:bg-gold-600 hover:text-white transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:ring-offset-2 focus:ring-offset-dark-900;
+  }
+
+  .btn-ghost {
+    @apply px-6 py-2 text-gold-400 rounded-full font-medium hover:bg-gold-500/10 transition-all duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gold-500/50;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold-600/40 rounded-full hover:bg-gold-500/60 transition-colors;
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.4s ease-out;
+}
