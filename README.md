@@ -1,69 +1,59 @@
 # Dr. Cláudio Henrique de Castro | Advocacia & Consultoria
 
-Este repositório contém o código-fonte da plataforma institucional do **Dr. Cláudio Henrique de Castro**, desenvolvida com tecnologias de ponta para garantir performance, segurança e uma experiência de usuário premium.
+Este é o repositório da plataforma institucional premium do **Dr. Cláudio Henrique de Castro** — Pós-Doutor em Ciências Histórico Jurídicas, Professor Universitário e Auditor do TCEPR. O projeto foi desenvolvido com tecnologias de ponta para oferecer uma experiência imersiva e de alta performance.
 
-## 🚀 Stack Tecnológica
+## 🚀 Tecnologias
 
-- **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
-- **Linguagem**: [TypeScript](https://www.typescriptlang.org/)
-- **Estilização**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Animações**: [Framer Motion](https://www.framer.com/motion/) & [GSAP](https://gsap.com/)
-- **3D/Gráficos**: [Three.js](https://threejs.org/) & [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
-- **Deployment**: GitHub Pages (Static Export)
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Linguagem:** [TypeScript](https://www.typescriptlang.org/) (Strict Mode)
+- **Estilização:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animações:** [GSAP](https://greensock.com/gsap/) & [Framer Motion](https://www.framer.com/motion/)
+- **3D Background:** [Three.js](https://threejs.org/) & [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+- **SEO & Schema:** [JSON-LD](https://schema.org/) (LegalService, Attorney, Book, Person)
+- **Qualidade:** Playwright (E2E), Axe-core (Acessibilidade)
 
-## 📋 Pré-requisitos
+## 📁 Estrutura do Projeto
 
-- **Node.js**: Versão 20 ou superior recomendada.
-- **Gerenciador de Pacotes**: npm (ou pnpm/yarn).
-
-## 🛠️ Como Rodar Localmente
-
-1. Clone o repositório:
-   ```bash
-   git clone <url-do-repositorio>
-   cd <nome-da-pasta>
-   ```
-
-2. Instale as dependências:
-   ```bash
-   npm install
-   ```
-
-3. Configure as variáveis de ambiente:
-   Crie um arquivo `.env.local` e adicione seu ID do Google Analytics:
-   ```bash
-   NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
-   ```
-
-4. Inicie o servidor de desenvolvimento:
-   ```bash
-   npm run dev
-   ```
-   Acesse: [http://localhost:3000](http://localhost:3000)
-
-## 📦 Build e Deploy
-
-Este projeto utiliza **Static Export** (`output: 'export'`), o que significa que ele gera arquivos HTML/CSS/JS estáticos prontos para serem servidos por qualquer servidor web, como o GitHub Pages.
-
-### Gerar Build Estático
-```bash
-npm run build
 ```
-O conteúdo será gerado na pasta `/out`.
+src/
+├── app/                 # Rotas e Layouts (App Router)
+│   ├── (home)           # Página principal (Hero, About, PracticeAreas)
+│   ├── autor/           # Seção Acadêmica (/biblioteca, /publicacoes, /livros)
+│   ├── career/          # Trajetória Profissional
+│   └── compliance/      # Políticas e Termos
+├── components/          # Componentes organizados por features
+├── data/                # Bases de dados estáticas (TS)
+├── hooks/               # Custom hooks (Animações, Modais)
+├── lib/                 # Utilitários, Analytics e Schemas SEO
+└── types/               # Definições de tipos TypeScript
+```
 
-### Deploy Automático (GitHub Actions)
-O projeto já está configurado com um workflow de CI/CD para o GitHub Pages.
-- Ao fazer push para a branch `main`, o build é processado automaticamente.
-- Verifique a pasta `.github/workflows/deploy.yml` para detalhes da configuração.
+## 🛠️ Desenvolvimento
 
-## ⚖️ LGPD & Privacidade
-O site foi construído com conformidade à LGPD:
-- Banner de Consentimento de Cookies integrado.
-- Gerenciamento de preferências de rastreamento.
-- Google Analytics 4 desativado por padrão (só ativa após consentimento).
+1.  **Instalar dependências:**
+    ```bash
+    npm install
+    ```
+
+2.  **Executar servidor de desenvolvimento:**
+    ```bash
+    npm run dev
+    ```
+
+3.  **Build (Static Export):**
+    ```bash
+    npm run build
+    ```
+    *Gera o diretório `./out` para deploy estático.*
+
+## ✨ Diferenciais do Projeto
+
+- **Arquitetura Static Export:** Otimizado para GitHub Pages sem abrir mão de interatividade.
+- **Design Gold/Dark:** Estética premium alinhada ao posicionamento de autoridade do Dr. Cláudio.
+- **Produção Acadêmica:** Sistema de filtragem e exibição de +2.000 obras e artigos.
+- **SEO Avançado:** Implementação completa de Rich Snippets para máxima visibilidade.
+- **Performance:** Carregamento progressivo de elementos 3D e animações ScrollTrigger.
 
 ## 📄 Licença
-Todo o conteúdo intelectual e código-fonte são de propriedade exclusiva de Cláudio Henrique de Castro Advocacia.
 
----
-*Desenvolvido com foco em excelência jurídica e tecnológica.*
+Uso restrito e institucional.
