@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System — chc.adv.br</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --dark-900:#0c0c0e;--dark-800:#141418;--gold-400:#e6b84a;--gold-500:#c9982a;--gold-600:#a87820;
+      --white-5:rgba(255,255,255,0.05);--white-10:rgba(255,255,255,0.10);--white-20:rgba(255,255,255,0.20);
+      --gray-300:#d1d5db;--gray-400:#9ca3af;--gray-500:#6b7280;--radius:16px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--dark-900);color:var(--gray-300);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;}
+    ::-webkit-scrollbar{width:6px;} ::-webkit-scrollbar-track{background:var(--dark-900);} ::-webkit-scrollbar-thumb{background:var(--gold-600);border-radius:3px;}
+    .wrapper{display:flex;min-height:100vh;}
+    /* SIDEBAR */
+    .sidebar{width:260px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;background:var(--dark-800);border-right:1px solid var(--white-5);padding:32px 0;}
+    .sidebar-brand{padding:0 24px 28px;border-bottom:1px solid var(--white-5);margin-bottom:24px;}
+    .sidebar-brand .symbol{font-family:'EB Garamond',serif;font-size:2.5rem;color:var(--gold-500);opacity:.3;line-height:1;display:block;margin-bottom:8px;}
+    .sidebar-brand h1{font-family:'EB Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.3;}
+    .sidebar-brand p{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.12em;margin-top:4px;}
+    .nav-section{padding:0 16px;margin-bottom:8px;}
+    .nav-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gray-500);padding:4px 8px 8px;}
+    .nav-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--gray-400);font-size:.82rem;transition:all .2s;margin-bottom:2px;}
+    .nav-item:hover,.nav-item.active{background:rgba(201,152,42,.08);color:var(--gold-400);}
+    .nav-item .num{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold-600);min-width:18px;}
+    /* MAIN */
+    .main{flex:1;min-width:0;padding:60px 56px;max-width:960px;}
+    /* PAGE HEADER */
+    .page-header{margin-bottom:64px;padding-bottom:40px;border-bottom:1px solid var(--white-5);}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,152,42,.10);border:1px solid rgba(201,152,42,.20);border-radius:999px;padding:6px 16px;margin-bottom:20px;}
+    .eyebrow span{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold-400);}
+    .page-header h1{font-family:'EB Garamond',serif;font-size:3rem;font-weight:700;color:#fff;line-height:1.15;margin-bottom:12px;}
+    .page-header h1 em{font-style:italic;background:linear-gradient(90deg,var(--gold-400),var(--gold-600));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .gold-bar{width:80px;height:3px;background:linear-gradient(to right,var(--gold-600),transparent);border-radius:999px;margin:16px 0;}
+    .page-header p{color:var(--gray-400);font-size:.95rem;max-width:540px;line-height:1.8;}
+    .stack-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;}
+    .stack-badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-500);border:1px solid var(--white-10);padding:4px 12px;border-radius:999px;}
+    /* SECTIONS */
+    .section{margin-bottom:72px;scroll-margin-top:40px;}
+    .section-header{display:flex;align-items:center;gap:16px;margin-bottom:32px;}
+    .section-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold-500);background:rgba(201,152,42,.08);border:1px solid rgba(201,152,42,.15);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .section-header h2{font-family:'EB Garamond',serif;font-size:1.55rem;font-weight:600;color:#fff;}
+    .subsection{margin-bottom:28px;}
+    .subsection h3{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold-500);margin-bottom:14px;}
+    /* TABLES */
+    table{width:100%;border-collapse:collapse;margin-bottom:8px;}
+    th{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-500);text-align:left;padding:8px 12px;border-bottom:1px solid var(--white-5);}
+    td{padding:10px 12px;font-size:.85rem;color:var(--gray-300);border-bottom:1px solid var(--white-5);vertical-align:top;}
+    td:first-child{width:42%;} tr:last-child td{border-bottom:none;} tr:hover td{background:var(--white-5);}
+    code,.token{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--gold-400);background:rgba(201,152,42,.08);padding:2px 7px;border-radius:5px;border:1px solid rgba(201,152,42,.12);white-space:nowrap;}
+    td code{font-size:.75rem;}
+    /* CODE BLOCKS */
+    .code-block{position:relative;background:var(--dark-800);border:1px solid var(--white-5);border-radius:12px;overflow:hidden;margin-bottom:20px;}
+    .code-block-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--white-5);background:rgba(255,255,255,.02);}
+    .code-block-lang{font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-500);}
+    .code-dots{display:flex;gap:5px;} .code-dots span{width:9px;height:9px;border-radius:50%;background:var(--white-10);}
+    pre{padding:20px;overflow-x:auto;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.75;color:var(--gray-300);}
+    .hl-comment{color:var(--gray-500);font-style:italic;} .hl-tag{color:#7dd3fc;} .hl-attr{color:#86efac;} .hl-str{color:var(--gold-400);} .hl-kw{color:#c084fc;}
+    /* SWATCHES */
+    .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-bottom:20px;}
+    .swatch{border-radius:10px;overflow:hidden;border:1px solid var(--white-5);}
+    .swatch-color{height:52px;}
+    .swatch-info{padding:8px 10px;background:var(--dark-800);}
+    .swatch-token{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold-400);display:block;margin-bottom:3px;}
+    .swatch-desc{font-size:.7rem;color:var(--gray-500);line-height:1.4;}
+    /* TYPE SCALE */
+    .type-scale{display:flex;flex-direction:column;gap:12px;margin-bottom:20px;}
+    .type-row{display:flex;align-items:baseline;gap:20px;padding:14px 16px;background:var(--dark-800);border:1px solid var(--white-5);border-radius:10px;}
+    .type-meta{min-width:160px;flex-shrink:0;}
+    .type-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-500);display:block;margin-bottom:3px;}
+    .type-classes{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gray-500);}
+    .type-preview{color:#fff;line-height:1.2;}
+    /* SPACING */
+    .spacing-rows{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+    .spacing-row{display:flex;align-items:center;gap:16px;padding:12px 16px;background:var(--dark-800);border:1px solid var(--white-5);border-radius:10px;}
+    .spacing-bar-wrap{flex:1;height:6px;background:var(--white-5);border-radius:3px;overflow:hidden;}
+    .spacing-bar{height:100%;background:linear-gradient(to right,var(--gold-600),var(--gold-400));border-radius:3px;}
+    .spacing-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold-400);min-width:90px;}
+    .spacing-desc{font-size:.78rem;color:var(--gray-500);min-width:200px;}
+    /* COMPONENT PREVIEWS */
+    .component-preview{background:var(--dark-900);border:1px solid var(--white-5);border-radius:12px;padding:32px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;min-height:100px;flex-wrap:wrap;gap:16px;}
+    .preview-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,152,42,.10);border:1px solid rgba(201,152,42,.20);border-radius:999px;padding:7px 16px;}
+    .preview-badge span{font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold-400);}
+    .preview-badge svg{color:var(--gold-400);}
+    .preview-gold-bar{width:96px;height:4px;background:linear-gradient(to right,var(--gold-600),transparent);border-radius:999px;}
+    .preview-card{background:rgba(20,20,24,.5);border:1px solid var(--white-5);border-radius:16px;padding:28px;width:280px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;cursor:pointer;}
+    .preview-card:hover{border-color:rgba(201,152,42,.40);transform:translateY(-3px);}
+    .preview-card::after{content:'';position:absolute;bottom:0;left:0;height:1px;width:0;background:linear-gradient(to right,var(--gold-600),transparent);transition:width .7s ease;}
+    .preview-card:hover::after{width:100%;}
+    .preview-card-top{display:flex;align-items:center;justify-content:space-between;}
+    .preview-icon-wrap{padding:10px;border-radius:10px;background:var(--white-5);border:1px solid var(--white-5);transition:all .3s;display:flex;align-items:center;justify-content:center;}
+    .preview-card:hover .preview-icon-wrap{border-color:rgba(201,152,42,.30);background:rgba(201,152,42,.05);}
+    .preview-card-cat{font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gray-500);}
+    .preview-card-stat{font-family:'EB Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold-500);}
+    .preview-card-statl{font-size:.65rem;color:var(--gray-500);}
+    .preview-card-title{font-family:'EB Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;transition:color .3s;}
+    .preview-card:hover .preview-card-title{color:var(--gold-400);}
+    .preview-card-desc{font-size:.75rem;color:var(--gray-400);line-height:1.6;}
+    .preview-card-cta{display:flex;align-items:center;gap:8px;color:var(--gold-500);font-size:.78rem;font-weight:500;}
+    .preview-card-cta svg{margin-left:auto;transition:transform .3s;}
+    .preview-card:hover .preview-card-cta svg{transform:translateX(3px);}
+    .preview-btn-outline{display:inline-flex;align-items:center;gap:10px;padding:12px 28px;background:transparent;border:1px solid rgba(201,152,42,.40);color:var(--gold-400);border-radius:999px;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .3s;}
+    .preview-btn-outline:hover{background:rgba(201,152,42,.10);border-color:var(--gold-400);}
+    .preview-btn-pill{display:inline-flex;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold-500);background:var(--dark-900);padding:5px 14px;border:1px solid rgba(201,152,42,.30);border-radius:999px;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;transition:all .3s;}
+    .preview-btn-pill:hover{background:var(--gold-500);color:var(--dark-900);}
+    /* ANIM GRID */
+    .anim-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:20px;}
+    .anim-card{background:var(--dark-800);border:1px solid var(--white-5);border-radius:10px;padding:16px;}
+    .anim-card-title{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--gold-400);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;}
+    .anim-prop{font-size:.75rem;color:var(--gray-400);margin-bottom:4px;} .anim-val{color:var(--gray-300);}
+    /* Z-STACK */
+    .zstack{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+    .zstack-item{display:flex;align-items:center;gap:14px;padding:10px 14px;border-radius:8px;border-left:3px solid transparent;}
+    .zstack-item.z-deco{background:rgba(255,255,255,.02);border-left-color:var(--gray-500);}
+    .zstack-item.z-card{background:rgba(201,152,42,.04);border-left-color:var(--gold-600);}
+    .zstack-item.z-warn{background:rgba(239,68,68,.04);border-left-color:#ef4444;}
+    .zstack-item.z-modal{background:rgba(201,152,42,.08);border-left-color:var(--gold-400);}
+    .zstack-val{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--gold-400);min-width:90px;}
+    .zstack-desc{font-size:.82rem;color:var(--gray-400);} .zstack-warn{font-size:.72rem;color:#f87171;margin-top:2px;}
+    /* GRADIENT LIST */
+    .gradient-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+    .gradient-item{display:flex;align-items:center;gap:14px;padding:12px 14px;background:var(--dark-800);border:1px solid var(--white-5);border-radius:10px;}
+    .gradient-swatch{width:48px;height:24px;border-radius:6px;flex-shrink:0;border:1px solid var(--white-10);}
+    .gradient-token{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold-400);flex:1;}
+    .gradient-use{font-size:.75rem;color:var(--gray-500);}
+    /* ICON GRID */
+    .icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:20px;}
+    .icon-card{background:var(--dark-800);border:1px solid var(--white-5);border-radius:10px;padding:16px;text-align:center;}
+    .icon-demo{display:flex;align-items:center;justify-content:center;margin-bottom:10px;color:var(--gold-500);}
+    .icon-ctx{font-family:'JetBrains Mono',monospace;font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-500);display:block;margin-bottom:4px;}
+    .icon-size{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--gold-400);}
+    /* CHECKLIST */
+    .checklist{display:flex;flex-direction:column;gap:8px;}
+    .check-item{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;background:var(--dark-800);border:1px solid var(--white-5);border-radius:10px;font-size:.85rem;color:var(--gray-300);cursor:pointer;transition:background .2s;user-select:none;}
+    .check-item:hover{background:rgba(201,152,42,.04);}
+    .check-item input[type=checkbox]{display:none;}
+    .check-box{width:18px;height:18px;border:1px solid rgba(201,152,42,.30);border-radius:5px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+    .check-item.checked .check-box{background:var(--gold-500);border-color:var(--gold-500);}
+    .check-item.checked .check-box::after{content:'✓';font-size:.7rem;color:var(--dark-900);font-weight:700;}
+    .check-item.checked .check-text{color:var(--gray-500);text-decoration:line-through;}
+    /* WARN */
+    .warn-box{display:flex;gap:12px;background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.15);border-radius:10px;padding:14px 16px;margin-bottom:20px;font-size:.82rem;color:#fde68a;line-height:1.6;}
+    .warn-box .icon{flex-shrink:0;font-size:1rem;margin-top:1px;}
+    /* DIVIDER */
+    .divider{height:1px;background:linear-gradient(to right,transparent,var(--white-10),transparent);margin:48px 0;}
+    @media(max-width:900px){.sidebar{display:none;}.main{padding:40px 24px;}.anim-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <span class="symbol">§</span>
+      <h1>Design System</h1>
+      <p>chc.adv.br</p>
+    </div>
+    <nav class="nav-section">
+      <div class="nav-label">Fundação</div>
+      <a href="#colors" class="nav-item"><span class="num">01</span> Paleta de Cores</a>
+      <a href="#typography" class="nav-item"><span class="num">02</span> Tipografia</a>
+      <a href="#spacing" class="nav-item"><span class="num">03</span> Espaçamento</a>
+    </nav>
+    <nav class="nav-section">
+      <div class="nav-label">Componentes</div>
+      <a href="#components" class="nav-item"><span class="num">04</span> Padrões de UI</a>
+      <a href="#layout" class="nav-item"><span class="num">05</span> Layout de Seção</a>
+    </nav>
+    <nav class="nav-section">
+      <div class="nav-label">Comportamento</div>
+      <a href="#animations" class="nav-item"><span class="num">06</span> Animações GSAP</a>
+      <a href="#gradients" class="nav-item"><span class="num">07</span> Gradientes</a>
+      <a href="#zindex" class="nav-item"><span class="num">08</span> Z-Index</a>
+      <a href="#icons" class="nav-item"><span class="num">09</span> Ícones</a>
+    </nav>
+    <nav class="nav-section">
+      <div class="nav-label">Qualidade</div>
+      <a href="#checklist" class="nav-item"><span class="num">10</span> Checklist</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="page-header">
+      <div class="eyebrow"><span>Referência Visual</span></div>
+      <h1>Design System<br><em>chc.adv.br</em></h1>
+      <div class="gold-bar"></div>
+      <p>Referência de consistência visual para todos os componentes do projeto. Extraído diretamente dos componentes em produção.</p>
+      <div class="stack-badges">
+        <span class="stack-badge">Next.js</span>
+        <span class="stack-badge">Tailwind CSS v3</span>
+        <span class="stack-badge">GSAP</span>
+        <span class="stack-badge">Lucide React</span>
+      </div>
+    </header>
+
+    <!-- 01 CORES -->
+    <section class="section" id="colors">
+      <div class="section-header"><div class="section-num">01</div><h2>Paleta de Cores</h2></div>
+      <div class="subsection">
+        <h3>Tons Base</h3>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-color" style="background:#0c0c0e;"></div><div class="swatch-info"><span class="swatch-token">dark-900</span><span class="swatch-desc">Fundo principal de seções</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#141418;"></div><div class="swatch-info"><span class="swatch-token">dark-800</span><span class="swatch-desc">Cards, painéis secundários</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:rgba(20,20,24,0.5);"></div><div class="swatch-info"><span class="swatch-token">dark-800/50</span><span class="swatch-desc">Cards com backdrop-blur</span></div></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <h3>Ouro — Accent</h3>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch-color" style="background:#e6b84a;"></div><div class="swatch-info"><span class="swatch-token">gold-400</span><span class="swatch-desc">Badges, hover de títulos</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#c9982a;"></div><div class="swatch-info"><span class="swatch-token">gold-500</span><span class="swatch-desc">Ícones, bordas ativas, stats</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:#a87820;"></div><div class="swatch-info"><span class="swatch-token">gold-600</span><span class="swatch-desc">Início de gradientes</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:rgba(201,152,42,0.05);"></div><div class="swatch-info"><span class="swatch-token">gold-500/5</span><span class="swatch-desc">Elemento § decorativo</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:rgba(201,152,42,0.10);"></div><div class="swatch-info"><span class="swatch-token">gold-500/10</span><span class="swatch-desc">BG badges, icon wrappers</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:rgba(201,152,42,0.20);"></div><div class="swatch-info"><span class="swatch-token">gold-500/20</span><span class="swatch-desc">Borda de badges</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:rgba(201,152,42,0.30);"></div><div class="swatch-info"><span class="swatch-token">gold-500/30</span><span class="swatch-desc">Borda hover de ícones</span></div></div>
+          <div class="swatch"><div class="swatch-color" style="background:rgba(201,152,42,0.40);"></div><div class="swatch-info"><span class="swatch-token">gold-500/40</span><span class="swatch-desc">Borda hover de cards</span></div></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <h3>Texto e Bordas</h3>
+        <table>
+          <thead><tr><th>Token</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>text-white</code></td><td>Títulos principais (h2, h3)</td></tr>
+            <tr><td><code>text-gray-300</code></td><td>Corpo com ênfase leve, texto longo</td></tr>
+            <tr><td><code>text-gray-400</code></td><td>Body text, descrições de cards</td></tr>
+            <tr><td><code>text-gray-500</code></td><td>Labels secundários, metadados</td></tr>
+            <tr><td><code>text-gold-400</code></td><td>Spans de destaque inline, badge labels</td></tr>
+            <tr><td><code>text-gold-500</code></td><td>CTAs, ícones, stats</td></tr>
+            <tr><td><code>border-white/5</code></td><td>Borda padrão de seções e cards</td></tr>
+            <tr><td><code>border-white/10</code></td><td>Divisores internos</td></tr>
+            <tr><td><code>border-white/20</code></td><td>Elementos modais</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 02 TIPOGRAFIA -->
+    <section class="section" id="typography">
+      <div class="section-header"><div class="section-num">02</div><h2>Tipografia</h2></div>
+      <div class="subsection">
+        <h3>Escala de Títulos</h3>
+        <div class="type-scale">
+          <div class="type-row"><div class="type-meta"><span class="type-label">h2 — principal</span><span class="type-classes">text-4xl md:text-6xl · serif · bold</span></div><div class="type-preview" style="font-family:'EB Garamond',serif;font-size:2.2rem;font-weight:700;">Biblioteca <span style="background:linear-gradient(90deg,#e6b84a,#a87820);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Jurídica</span></div></div>
+          <div class="type-row"><div class="type-meta"><span class="type-label">h2 — navegação</span><span class="type-classes">text-3xl md:text-5xl · serif · bold</span></div><div class="type-preview" style="font-family:'EB Garamond',serif;font-size:1.7rem;font-weight:700;">Escolha onde <span style="background:linear-gradient(90deg,#e6b84a,#a87820);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">aprofundar</span></div></div>
+          <div class="type-row"><div class="type-meta"><span class="type-label">h3 — card</span><span class="type-classes">text-xl md:text-2xl · serif · bold</span></div><div class="type-preview" style="font-family:'EB Garamond',serif;font-size:1.25rem;font-weight:700;">Livros Publicados</div></div>
+          <div class="type-row"><div class="type-meta"><span class="type-label">stat — numérico</span><span class="type-classes">text-2xl · serif · bold · gold-500</span></div><div class="type-preview" style="font-family:'EB Garamond',serif;font-size:1.5rem;font-weight:700;color:#c9982a;">14+</div></div>
+          <div class="type-row"><div class="type-meta"><span class="type-label">stat — destaque</span><span class="type-classes">text-4xl · bold · white</span></div><div class="type-preview" style="font-size:2rem;font-weight:700;">+2290</div></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <h3>Labels, Corpo e Código</h3>
+        <table>
+          <thead><tr><th>Contexto</th><th>Classes</th></tr></thead>
+          <tbody>
+            <tr><td>Badge / category</td><td><code>text-sm font-mono uppercase tracking-widest text-gold-400</code></td></tr>
+            <tr><td>Metadado</td><td><code>text-xs font-mono uppercase tracking-widest text-gray-500</code></td></tr>
+            <tr><td>Ano / timeline</td><td><code>text-xs font-mono text-gold-500</code> ou <code>text-gray-500</code></td></tr>
+            <tr><td>Body principal</td><td><code>text-lg leading-relaxed text-gray-300</code></td></tr>
+            <tr><td>Body card</td><td><code>text-sm leading-relaxed text-gray-400</code></td></tr>
+            <tr><td>Span destaque inline</td><td><code>text-gold-400 font-semibold</code></td></tr>
+            <tr><td>Gradiente em h2</td><td><code>.text-gradient-gold</code> (classe customizada)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 03 ESPAÇAMENTO -->
+    <section class="section" id="spacing">
+      <div class="section-header"><div class="section-num">03</div><h2>Espaçamento</h2></div>
+      <div class="subsection">
+        <h3>Padding de Seções</h3>
+        <div class="spacing-rows">
+          <div class="spacing-row"><span class="spacing-label"><code>py-20 md:py-32</code></span><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:100%;"></div></div><span class="spacing-desc">Seção completa — hero, conteúdo</span></div>
+          <div class="spacing-row"><span class="spacing-label"><code>pt-12 md:pt-16 pb-12</code></span><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:55%;"></div></div><span class="spacing-desc">Seção compacta — galeria, widget</span></div>
+          <div class="spacing-row"><span class="spacing-label"><code>p-8</code></span><div class="spacing-bar-wrap"><div class="spacing-bar" style="width:30%;"></div></div><span class="spacing-desc">Padding interno de cards</span></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <h3>Gaps e Margens</h3>
+        <table>
+          <thead><tr><th>Token</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>gap-6 lg:gap-8</code></td><td>Grid de cards</td></tr>
+            <tr><td><code>gap-6</code> (flex-col)</td><td>Flex interno de card — nunca usar <code>mt-*</code> nos filhos</td></tr>
+            <tr><td><code>mb-16</code></td><td>Header para grid (seções completas)</td></tr>
+            <tr><td><code>mb-20</code></td><td>Header para grid (produção acadêmica)</td></tr>
+            <tr><td><code>mb-10</code></td><td>Header para galeria</td></tr>
+            <tr><td><code>mt-6</code></td><td>Marquee container (espaço acima da galeria)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="warn-box"><span class="icon">⚠️</span><div>Dentro de containers <code>flex-col gap-*</code>, nunca usar <code>mt-*</code> nos filhos diretos. O <code>gap</code> gerencia o espaçamento — margens manuais criam espaço duplo inconsistente.</div></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 04 COMPONENTES -->
+    <section class="section" id="components">
+      <div class="section-header"><div class="section-num">04</div><h2>Padrões de UI</h2></div>
+
+      <div class="subsection">
+        <h3>Badge / Eyebrow Label</h3>
+        <div class="component-preview">
+          <div class="preview-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            <span>Navegar pela Biblioteca</span>
+          </div>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">TSX</span><div class="code-dots"><span></span><span></span><span></span></div></div>
+          <pre><span class="hl-tag">&lt;div</span> <span class="hl-attr">className</span>=<span class="hl-str">"inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/20 rounded-full px-4 py-2 mb-6"</span><span class="hl-tag">&gt;</span>
+  <span class="hl-tag">&lt;Icon</span> <span class="hl-attr">className</span>=<span class="hl-str">"w-4 h-4 text-gold-400"</span> <span class="hl-tag">/&gt;</span>
+  <span class="hl-tag">&lt;span</span> <span class="hl-attr">className</span>=<span class="hl-str">"text-gold-400 text-sm font-mono tracking-widest uppercase"</span><span class="hl-tag">&gt;</span>
+    Label
+  <span class="hl-tag">&lt;/span&gt;</span>
+<span class="hl-tag">&lt;/div&gt;</span></pre>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Divisores</h3>
+        <div class="component-preview" style="flex-direction:column;gap:24px;">
+          <div><div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#6b7280;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Decorativo — sob h2</div><div style="width:96px;height:4px;background:linear-gradient(to right,#a87820,transparent);border-radius:999px;"></div></div>
+          <div><div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:#6b7280;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Sutil — entre seções</div><div style="width:96px;height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,0.1),transparent);"></div></div>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">TSX</span><div class="code-dots"><span></span><span></span><span></span></div></div>
+          <pre><span class="hl-comment">// Decorativo (sob h2)</span>
+<span class="hl-tag">&lt;div</span> <span class="hl-attr">className</span>=<span class="hl-str">"w-24 h-1 bg-gradient-to-r from-gold-600 to-transparent mx-auto rounded-full"</span> <span class="hl-tag">/&gt;</span>
+
+<span class="hl-comment">// Sutil (entre seções)</span>
+<span class="hl-tag">&lt;div</span> <span class="hl-attr">className</span>=<span class="hl-str">"h-px w-24 bg-gradient-to-r from-transparent via-white/10 to-transparent mx-auto"</span> <span class="hl-tag">/&gt;</span></pre>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Card de Navegação (interativo)</h3>
+        <div class="component-preview">
+          <div class="preview-card">
+            <div class="preview-card-top">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="preview-icon-wrap"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c9982a" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+                <span class="preview-card-cat">Catálogo</span>
+              </div>
+              <div style="text-align:right;"><div class="preview-card-stat">14+</div><div class="preview-card-statl">obras publicadas</div></div>
+            </div>
+            <div><div class="preview-card-title">Livros Publicados</div><div class="preview-card-desc" style="margin-top:8px;">Obras completas com capa, editora e link de aquisição. Produção bibliográfica de décadas de pesquisa.</div></div>
+            <div class="preview-card-cta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity=".7"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              Explorar o catálogo
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">TSX</span><div class="code-dots"><span></span><span></span><span></span></div></div>
+          <pre><span class="hl-tag">&lt;Link</span>
+  <span class="hl-attr">href</span>=<span class="hl-str">{href}</span>
+  <span class="hl-attr">className</span>=<span class="hl-str">"group relative rounded-2xl border border-white/5
+    hover:border-gold-500/40 bg-dark-800/50 backdrop-blur-sm p-8
+    flex flex-col gap-6 interactive-card hover:-translate-y-1
+    overflow-hidden transition-all duration-300"</span>
+<span class="hl-tag">&gt;</span>
+  <span class="hl-comment">{/* Glow hover */}</span>
+  <span class="hl-tag">&lt;div</span> <span class="hl-attr">className</span>=<span class="hl-str">"absolute inset-0 bg-gradient-to-br from-gold-600/10
+    to-transparent opacity-0 group-hover:opacity-100
+    transition-opacity duration-700 pointer-events-none"</span> <span class="hl-tag">/&gt;</span>
+  <span class="hl-comment">{/* Linha inferior animada */}</span>
+  <span class="hl-tag">&lt;div</span> <span class="hl-attr">className</span>=<span class="hl-str">"absolute bottom-0 left-0 h-[1px] w-0
+    group-hover:w-full bg-gradient-to-r from-gold-600 to-transparent
+    transition-all duration-700 ease-out"</span> <span class="hl-tag">/&gt;</span>
+<span class="hl-tag">&lt;/Link&gt;</span></pre>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>CTAs</h3>
+        <div class="component-preview" style="gap:16px;flex-wrap:wrap;">
+          <button class="preview-btn-outline">Currículo Lattes <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          <button class="preview-btn-pill">Adquira um Exemplar</button>
+        </div>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">TSX</span><div class="code-dots"><span></span><span></span><span></span></div></div>
+          <pre><span class="hl-comment">// CTA outline (externo)</span>
+<span class="hl-tag">&lt;a</span> <span class="hl-attr">className</span>=<span class="hl-str">"inline-flex items-center gap-3 px-8 py-4 bg-transparent
+  border border-gold-500/40 text-gold-400 rounded-full font-medium
+  hover:bg-gold-500/10 hover:border-gold-400 transition-all group"</span><span class="hl-tag">&gt;</span>
+
+<span class="hl-comment">// Badge pill (link interno)</span>
+<span class="hl-tag">&lt;Link</span> <span class="hl-attr">className</span>=<span class="hl-str">"text-xs font-mono text-gold-500 bg-dark-900 px-4 py-1.5
+  border border-gold-500/30 rounded-full hover:bg-gold-500
+  hover:text-dark-900 transition-all duration-300 whitespace-nowrap"</span><span class="hl-tag">&gt;</span></pre>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 05 LAYOUT -->
+    <section class="section" id="layout">
+      <div class="section-header"><div class="section-num">05</div><h2>Layout de Seção</h2></div>
+      <div class="code-block">
+        <div class="code-block-header"><span class="code-block-lang">TSX — Estrutura Base</span><div class="code-dots"><span></span><span></span><span></span></div></div>
+        <pre><span class="hl-tag">&lt;section</span> <span class="hl-attr">className</span>=<span class="hl-str">"py-20 md:py-32 relative overflow-hidden
+  bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900
+  border-b border-white/5"</span><span class="hl-tag">&gt;</span>
+
+  <span class="hl-comment">{/* § decorativo — SEMPRE z-0, nunca z-20 */}</span>
+  <span class="hl-tag">&lt;div</span> <span class="hl-attr">className</span>=<span class="hl-str">"absolute bottom-10 -right-10 text-[22rem] font-serif
+    font-bold text-gold-500/5 leading-none select-none
+    pointer-events-none z-0"</span><span class="hl-tag">&gt;</span>
+    §
+  <span class="hl-tag">&lt;/div&gt;</span>
+
+  <span class="hl-comment">{/* SectionContainer — nunca passar w-full */}</span>
+  <span class="hl-tag">&lt;SectionContainer&gt;</span>
+    <span class="hl-comment">{/* conteúdo */}</span>
+  <span class="hl-tag">&lt;/SectionContainer&gt;</span>
+
+<span class="hl-tag">&lt;/section&gt;</span></pre>
+      </div>
+      <div class="subsection" style="margin-top:24px;">
+        <h3>Variações de Fundo</h3>
+        <table>
+          <thead><tr><th>Tipo</th><th>Classes</th></tr></thead>
+          <tbody>
+            <tr><td>Padrão</td><td><code>bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900</code></td></tr>
+            <tr><td>Flat</td><td><code>bg-dark-900</code></td></tr>
+            <tr><td>Com imagem</td><td><code>bg-dark-900</code> + div com <code>bg-cover opacity-30 mix-blend-overlay</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="warn-box" style="margin-top:16px;"><span class="icon">⚠️</span><div>O elemento <code>§</code> decorativo deve sempre ter <code>z-0</code>. Com <code>z-20</code> ele sobrepõe o conteúdo interativo (que usa <code>z-10</code>), bloqueando hover e cliques.</div></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 06 ANIMAÇÕES -->
+    <section class="section" id="animations">
+      <div class="section-header"><div class="section-num">06</div><h2>Animações GSAP</h2></div>
+      <div class="subsection">
+        <h3>Estrutura Obrigatória</h3>
+        <div class="code-block">
+          <div class="code-block-header"><span class="code-block-lang">TSX</span><div class="code-dots"><span></span><span></span><span></span></div></div>
+          <pre><span class="hl-kw">useEffect</span>(() <span class="hl-kw">=&gt;</span> {
+  <span class="hl-kw">if</span> (typeof window !== <span class="hl-str">'undefined'</span>) {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+  <span class="hl-kw">const</span> ctx = gsap.context(() <span class="hl-kw">=&gt;</span> {
+    <span class="hl-comment">// animações aqui</span>
+  }, sectionRef);
+  <span class="hl-kw">return</span> () <span class="hl-kw">=&gt;</span> ctx.revert(); <span class="hl-comment">// cleanup obrigatório</span>
+}, []);</pre>
+        </div>
+      </div>
+      <div class="subsection">
+        <h3>Padrões de Entrada</h3>
+        <div class="anim-grid">
+          <div class="anim-card"><div class="anim-card-title">Fade Up — Cards</div><div class="anim-prop">from: <span class="anim-val">y:40, opacity:0</span></div><div class="anim-prop">to: <span class="anim-val">y:0, opacity:1</span></div><div class="anim-prop">duration: <span class="anim-val">0.8</span></div><div class="anim-prop">stagger: <span class="anim-val">0.15</span></div><div class="anim-prop">ease: <span class="anim-val">power3.out</span></div></div>
+          <div class="anim-card"><div class="anim-card-title">Slide Horizontal</div><div class="anim-prop">from: <span class="anim-val">x:±50, opacity:0</span></div><div class="anim-prop">to: <span class="anim-val">x:0, opacity:1</span></div><div class="anim-prop">duration: <span class="anim-val">1</span></div><div class="anim-prop">delay col direita: <span class="anim-val">0.2</span></div></div>
+          <div class="anim-card"><div class="anim-card-title">Fade Up — Header</div><div class="anim-prop">from: <span class="anim-val">y:30, opacity:0</span></div><div class="anim-prop">to: <span class="anim-val">y:0, opacity:1</span></div><div class="anim-prop">duration: <span class="anim-val">1</span></div></div>
+        </div>
+      </div>
+      <div class="subsection">
+        <h3>ScrollTrigger — start</h3>
+        <table>
+          <thead><tr><th>Valor</th><th>Uso</th></tr></thead>
+          <tbody>
+            <tr><td><code>top 80%</code></td><td>Headers de seção</td></tr>
+            <tr><td><code>top 75%</code></td><td>Cards / grupos</td></tr>
+            <tr><td><code>top 70%</code></td><td>Colunas laterais</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 07 GRADIENTES -->
+    <section class="section" id="gradients">
+      <div class="section-header"><div class="section-num">07</div><h2>Gradientes</h2></div>
+      <div class="warn-box"><span class="icon">⚠️</span><div>Usar sempre <code>bg-gradient-to-*</code> (Tailwind v3). <strong>Nunca</strong> <code>bg-linear-to-*</code> — sintaxe Tailwind v4, quebra silenciosamente todos os gradientes no projeto atual.</div></div>
+      <div class="gradient-list">
+        <div class="gradient-item"><div class="gradient-swatch" style="background:linear-gradient(to bottom,#0c0c0e,#141418,#0c0c0e);"></div><span class="gradient-token">bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900</span><span class="gradient-use">Fundo de seção</span></div>
+        <div class="gradient-item"><div class="gradient-swatch" style="background:linear-gradient(to right,#a87820,transparent);"></div><span class="gradient-token">bg-gradient-to-r from-gold-600 to-transparent</span><span class="gradient-use">Divisor dourado</span></div>
+        <div class="gradient-item"><div class="gradient-swatch" style="background:linear-gradient(to right,transparent,rgba(255,255,255,0.1),transparent);"></div><span class="gradient-token">from-transparent via-white/10 to-transparent</span><span class="gradient-use">Divisor sutil</span></div>
+        <div class="gradient-item"><div class="gradient-swatch" style="background:linear-gradient(to bottom right,rgba(168,120,32,0.10),transparent);"></div><span class="gradient-token">bg-gradient-to-br from-gold-600/10 to-transparent</span><span class="gradient-use">Glow de card hover</span></div>
+        <div class="gradient-item"><div class="gradient-swatch" style="background:linear-gradient(to top,rgba(12,12,14,0.8),transparent);"></div><span class="gradient-token">bg-gradient-to-t from-dark-900/80 to-transparent</span><span class="gradient-use">Overlay em imagem</span></div>
+        <div class="gradient-item"><div class="gradient-swatch" style="background:linear-gradient(to right,#0c0c0e,transparent);"></div><span class="gradient-token">bg-gradient-to-r from-dark-900 to-transparent</span><span class="gradient-use">Máscara lateral esquerda</span></div>
+        <div class="gradient-item"><div class="gradient-swatch" style="background:linear-gradient(to left,#0c0c0e,transparent);"></div><span class="gradient-token">bg-gradient-to-l from-dark-900 to-transparent</span><span class="gradient-use">Máscara lateral direita</span></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 08 Z-INDEX -->
+    <section class="section" id="zindex">
+      <div class="section-header"><div class="section-num">08</div><h2>Z-Index</h2></div>
+      <div class="zstack">
+        <div class="zstack-item z-deco"><span class="zstack-val"><code>z-0</code></span><div><div class="zstack-desc">Elementos decorativos (§, backgrounds)</div></div></div>
+        <div class="zstack-item z-card"><span class="zstack-val"><code>z-10</code></span><div><div class="zstack-desc">Conteúdo de cards, SectionContainer</div></div></div>
+        <div class="zstack-item z-warn"><span class="zstack-val" style="color:#f87171;"><code>z-20</code></span><div><div class="zstack-desc" style="color:#f87171;">Não usar para elementos decorativos</div><div class="zstack-warn">z-20 em decorativos sobrepõe conteúdo interativo (z-10)</div></div></div>
+        <div class="zstack-item z-modal"><span class="zstack-val"><code>z-[70]</code></span><div><div class="zstack-desc">Botões dentro de modais / lightbox</div></div></div>
+        <div class="zstack-item z-modal"><span class="zstack-val"><code>z-[10001]</code></span><div><div class="zstack-desc">Overlay de modais / lightbox</div></div></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 09 ÍCONES -->
+    <section class="section" id="icons">
+      <div class="section-header"><div class="section-num">09</div><h2>Ícones — Lucide React</h2></div>
+      <div class="icon-grid">
+        <div class="icon-card"><div class="icon-demo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div><span class="icon-ctx">Badge / Label</span><span class="icon-size">w-4 h-4</span></div>
+        <div class="icon-card"><div class="icon-demo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><span class="icon-ctx">Icon wrapper card</span><span class="icon-size">w-5 h-5</span></div>
+        <div class="icon-card"><div class="icon-demo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><span class="icon-ctx">Icon wrapper seção</span><span class="icon-size">size={24}</span></div>
+        <div class="icon-card"><div class="icon-demo"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="icon-ctx">CTA inline</span><span class="icon-size">w-4 h-4</span></div>
+        <div class="icon-card"><div class="icon-demo"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div><span class="icon-ctx">Fechar modal</span><span class="icon-size">size={28}</span></div>
+        <div class="icon-card"><div class="icon-demo"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></div><span class="icon-ctx">Nav modal</span><span class="icon-size">size={32}</span></div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- 10 CHECKLIST -->
+    <section class="section" id="checklist">
+      <div class="section-header"><div class="section-num">10</div><h2>Checklist de Consistência</h2></div>
+      <p style="color:var(--gray-500);font-size:.82rem;margin-bottom:20px;">Clique para marcar os itens ao revisar ou criar um componente.</p>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox"/><div class="check-box"></div><span class="check-text">Usa <code>bg-gradient-to-*</code> (nunca <code>bg-linear-to-*</code>)</span></label>
+        <label class="check-item"><input type="checkbox"/><div class="check-box"></div><span class="check-text">Elemento <code>§</code> decorativo tem <code>z-0</code></span></label>
+        <label class="check-item"><input type="checkbox"/><div class="check-box"></div><span class="check-text">Sem <code>mt-*</code> dentro de containers <code>flex-col gap-*</code></span></label>
+        <label class="check-item"><input type="checkbox"/><div class="check-box"></div><span class="check-text">Sem <code>w-full</code> no <code>SectionContainer</code></span></label>
+        <label class="check-item"><input type="checkbox"/><div class="check-box"></div><span class="check-text">Hover border definido uma única vez (não duplicado em data array + className)</span></label>
+        <label class="check-item"><input type="checkbox"/><div class="check-box"></div><span class="check-text">Padding: <code>py-20 md:py-32</code> (seção completa) ou <code>pt-12 md:pt-16 pb-12</code> (compacta)</span></label>
+        <label class="check-item"><input type="checkbox"/><div class="check-box"></div><span class="check-text">Labels usam <code>font-mono tracking-widest uppercase</code></span></label>
+        <label class="check-item"><input type="checkbox"/><div class="check-box"></div><span class="check-text">Gradientes decorativos terminam em <code>to-transparent</code></span></label>
+        <label class="check-item"><input type="checkbox"/><div class="check-box"></div><span class="check-text">GSAP registrado com <code>gsap.context()</code> e <code>ctx.revert()</code> no cleanup</span></label>
+        <label class="check-item"><input type="checkbox"/><div class="check-box"></div><span class="check-text">Sem classe <code>block</code> redundante em elementos já com <code>flex</code></span></label>
+      </div>
+    </section>
+
+  </main>
+</div>
+<script>
+  document.querySelectorAll('.check-item').forEach(item => {
+    item.addEventListener('click', () => item.classList.toggle('checked'));
+  });
+  const sections = document.querySelectorAll('.section');
+  const navItems = document.querySelectorAll('.nav-item');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(n => n.classList.remove('active'));
+        const active = document.querySelector(`.nav-item[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
