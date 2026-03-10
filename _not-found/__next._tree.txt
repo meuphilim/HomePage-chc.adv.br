@@ -1,0 +1,2 @@
+:HL["/HomePage-chc.adv.br/_next/static/chunks/279b2216827d836d.css","style"]
+0:{"buildId":"p6iAOfn5t4r9AYN8lW4iC","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"/_not-found","paramType":null,"paramKey":"/_not-found","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
